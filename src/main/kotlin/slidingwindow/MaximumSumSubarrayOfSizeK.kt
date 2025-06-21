@@ -28,7 +28,7 @@ fun main() {
 
     // Slide the window to the right and find the max sum
     for (i in k until n) {
-        sum = sum - arr[i - k] + arr[i] 
+        sum = sum - arr[i - k] + arr[i]
         maxSum = max(maxSum, sum)
     }
 
