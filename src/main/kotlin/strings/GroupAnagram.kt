@@ -8,19 +8,20 @@ fun groupAnagrams(strs: Array<String>): List<List<String>> {
     val frequencyMap = mutableMapOf<String, ArrayList<String>>()
     for (str in strs) {
         val sortedStr = sortString(str)
-        if (frequencyMap.contains(sortedStr)) {
-            frequencyMap[sortedStr]?.add(str)
-        } else {
-            val list = ArrayList<String>()
-            list.add(str)
-            frequencyMap[sortedStr] = list
-        }
+//        if (frequencyMap.contains(sortedStr)) {
+//            frequencyMap[sortedStr]?.add(str)
+//        } else {
+//            val list = ArrayList<String>()
+//            list.add(str)
+//            frequencyMap[sortedStr] = list
+//        }
+        frequencyMap.getOrPut(sortedStr) { ArrayList() }.add(str)
     }
-    val list = mutableListOf<List<String>>()
-    for ((key, value) in frequencyMap) {
-        list.add(value)
-    }
-    return list
+//    val list = mutableListOf<List<String>>()
+//    for ((key, value) in frequencyMap) {
+//        list.add(value)
+//    }
+    return frequencyMap.values.toList()
 }
 
 fun sortString(str: String): String {
