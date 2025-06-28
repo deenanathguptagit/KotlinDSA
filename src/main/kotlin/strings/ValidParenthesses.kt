@@ -1,9 +1,24 @@
 package strings
 
 fun main() {
-    val input = "{[()]}"
-    val res = isValid(input)
-    println(res)
+    val input = "([])"
+//    val res = isValid(input)
+//    println(res)
+
+    val stack = ArrayDeque<Char>()
+    for (c in input) {
+        if (c == '(') {
+            stack.add(')')
+        } else if (c == '{') {
+            stack.add('}')
+        } else if (c == '[') {
+            stack.add(']')
+        } else {
+            val match = c == stack.removeLast()
+           println("$c $match")
+        }
+    }
+    println("Valid")
 }
 
 //fun isValid(input: String):Boolean {
@@ -39,7 +54,8 @@ fun isValid(input: String): Boolean {
 
     return stack.isEmpty()
 }
-fun isVowels(c:Char):Boolean {
+
+fun isVowels(c: Char): Boolean {
     val list = listOf('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U')
     return list.contains(c)
 }
