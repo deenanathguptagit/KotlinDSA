@@ -9,7 +9,6 @@ fun isPalindrome(input: String): Boolean {
 
     var start = 0
     var end = str.length
-    var index= 0
 
     while(start<end) {
         if(str[start] !in 'a'..'z') {
@@ -17,7 +16,6 @@ fun isPalindrome(input: String): Boolean {
             continue
         }
         result.append(str[start])
-        index++
         start++
     }
     start = 0
@@ -39,7 +37,7 @@ fun main() {
 //    val res = countGoodSubstrings("xyzzaz")
 //    println(res)
 
-    println( isPalindrome("A man, a plan, a canal: Panama"))
+    println( isPalindrome("I a maIq"))
 
 }
 

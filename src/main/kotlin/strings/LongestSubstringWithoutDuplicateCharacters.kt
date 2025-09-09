@@ -1,5 +1,7 @@
 package strings
 
+import kotlin.math.max
+
 fun main() {
     val str = "abcdecbeadfg"
     val result = longestSubString(str)
@@ -17,7 +19,7 @@ fun longestSubString(str: String): Int {
             left++
         }
         seen.add(str[right])
-        maxCount = Math.max(maxCount, right - left + 1)
+        maxCount = max(maxCount, seen.size)
         right++
     }
     return maxCount

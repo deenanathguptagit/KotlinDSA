@@ -40,6 +40,8 @@ fun productExceptSelf(nums: IntArray): IntArray {
 fun main() {
     val result = productExceptSelf(intArrayOf(-1,1,0,-3,3))
 //    val result = productExceptSelf(intArrayOf(1, 2, 3, 4))
+    //24,12,8,4
+    //
 
     println(result.joinToString())
 }

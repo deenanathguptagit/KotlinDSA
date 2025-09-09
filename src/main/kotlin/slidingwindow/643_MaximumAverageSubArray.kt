@@ -23,5 +23,5 @@ fun findMaxAverage(nums: IntArray, k: Int): Double {
         endIndex++
         maxSum = Math.max(maxSum, sum)
     }
-    return (maxSum/4).toDouble()
+    return (maxSum/k).toDouble()
 }

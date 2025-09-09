@@ -1,27 +1,44 @@
 package array
 
+import kotlin.math.max
+import kotlin.math.min
+
 fun main() {
-    val input = intArrayOf(2,4,1)
-    println(maxProfit(input))
+//    val input = intArrayOf(5,4,2,1)
+//    val input = intArrayOf(7,1,5,3,6,4)
+//    println(maxProfit(input))
+
+    val input = removeDuplicates1(intArrayOf(0,0,1,1,1,2,2))
+    println(input)
 }
 
 fun maxProfit(prices: IntArray): Int {
-    //first select lowest number index to buy the stock
-    var buy = Integer.MAX_VALUE
-    var index = 0
-    for (i in prices.indices) {
-        buy = Math.min(buy, prices[i])
+    if (prices.size < 2) {
+        return 0
     }
-    var selling = 0
 
-    for (i in prices.indices) {
-        if (prices[i] == buy) {
-            index = i
+    var minPrice = Int.MAX_VALUE
+    var maxProfit = 0
+
+    for (price in prices) {
+        minPrice = min(minPrice, price)
+        maxProfit = max(maxProfit, price - minPrice)
+    }
+
+    return maxProfit
+}
+
+fun removeDuplicates1(nums: IntArray): Int {
+    if (nums.isEmpty()) return 0
+
+    var i = 1  // Pointer for the next unique position
+
+    for (j in 1 until nums.size) {
+        if (nums[j] != nums[j - 1]) {
+            nums[i] = nums[j]
+            i++
         }
     }
 
-    for (i in index..<prices.size) {
-        selling = maxOf(selling, prices[i])
-    }
-    return selling - buy
+    return i
 }

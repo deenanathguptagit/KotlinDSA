@@ -4,16 +4,12 @@ import kotlin.math.max
 
 
 fun maxSubArray(nums: IntArray): Int {
-    var sum = 0
-    var maxSum = Int.MIN_VALUE
-    var start = 0
-    var end = 0
-    for (num in nums) {
-        sum += num
-        if (sum < 0) {
-            sum = 0
-        }
-        maxSum = max(sum, maxSum)
+    var maxSum = nums[0]
+    var currSum = nums[0]
+
+    for (i in 1 until nums.size) {
+        currSum = max(nums[i], nums[i] + currSum)
+        maxSum = max(currSum, maxSum)
     }
     return maxSum
 }
